@@ -1,0 +1,254 @@
+.
+├── data
+│   ├── external
+│   ├── interim
+│   │   └── wdc-lspc
+│   │       ├── corpus
+│   │       │   └── preprocessed_english_corpus.pkl.gz
+│   │       ├── gold-standards
+│   │       │   ├── preprocessed_all_gs.pkl.gz
+│   │       │   ├── preprocessed_cameras_gs.pkl.gz
+│   │       │   ├── preprocessed_computers_gs.pkl.gz
+│   │       │   ├── preprocessed_computers_new_testset_1500.pkl.gz
+│   │       │   ├── preprocessed_computers_new_testset_500.pkl.gz
+│   │       │   ├── preprocessed_shoes_gs.pkl.gz
+│   │       │   └── preprocessed_watches_gs.pkl.gz
+│   │       └── training-sets
+│   │           ├── preprocessed_all_train_large.pkl.gz
+│   │           ├── preprocessed_all_train_medium.pkl.gz
+│   │           ├── preprocessed_all_train_small.pkl.gz
+│   │           ├── preprocessed_all_train_xlarge.pkl.gz
+│   │           ├── preprocessed_cameras_train_large.pkl.gz
+│   │           ├── preprocessed_cameras_train_medium.pkl.gz
+│   │           ├── preprocessed_cameras_train_small.pkl.gz
+│   │           ├── preprocessed_cameras_train_xlarge.pkl.gz
+│   │           ├── preprocessed_computers_train_large.pkl.gz
+│   │           ├── preprocessed_computers_train_medium.pkl.gz
+│   │           ├── preprocessed_computers_train_small.pkl.gz
+│   │           ├── preprocessed_computers_train_xlarge.pkl.gz
+│   │           ├── preprocessed_shoes_train_large.pkl.gz
+│   │           ├── preprocessed_shoes_train_medium.pkl.gz
+│   │           ├── preprocessed_shoes_train_small.pkl.gz
+│   │           ├── preprocessed_shoes_train_xlarge.pkl.gz
+│   │           ├── preprocessed_watches_train_large.pkl.gz
+│   │           ├── preprocessed_watches_train_medium.pkl.gz
+│   │           ├── preprocessed_watches_train_small.pkl.gz
+│   │           └── preprocessed_watches_train_xlarge.pkl.gz
+│   ├── processed
+│   ├── raw
+│   │   └── wdc-lspc
+│   │       ├── corpus
+│   │       │   └── offers_corpus_english_v2_non_norm.json.gz
+│   │       ├── gold-standards
+│   │       │   ├── all_gs.json.gz
+│   │       │   ├── cameras_gs.json.gz
+│   │       │   ├── computers_gs.json.gz
+│   │       │   ├── computers_new_testset_1500.json.gz
+│   │       │   ├── computers_new_testset_500.json.gz
+│   │       │   ├── shoes_gs.json.gz
+│   │       │   └── watches_gs.json.gz
+│   │       ├── pre-training-set
+│   │       │   ├── pre-training_4cat_new_5.csv.gz
+│   │       │   ├── pre-training_4cat_new_5.pkl.gz
+│   │       │   ├── pre-training_computers_only_new_15.csv.gz
+│   │       │   └── pre-training_computers_only_new_15.pkl.gz
+│   │       ├── training-sets
+│   │       │   ├── all_train_large.json.gz
+│   │       │   ├── all_train_medium.json.gz
+│   │       │   ├── all_train_small.json.gz
+│   │       │   ├── all_train_xlarge.json.gz
+│   │       │   ├── cameras_train_large.json.gz
+│   │       │   ├── cameras_train_medium.json.gz
+│   │       │   ├── cameras_train_small.json.gz
+│   │       │   ├── cameras_train_xlarge.json.gz
+│   │       │   ├── computers_train_large.json.gz
+│   │       │   ├── computers_train_medium.json.gz
+│   │       │   ├── computers_train_small.json.gz
+│   │       │   ├── computers_train_xlarge.json.gz
+│   │       │   ├── shoes_train_large.json.gz
+│   │       │   ├── shoes_train_medium.json.gz
+│   │       │   ├── shoes_train_small.json.gz
+│   │       │   ├── shoes_train_xlarge.json.gz
+│   │       │   ├── watches_train_large.json.gz
+│   │       │   ├── watches_train_medium.json.gz
+│   │       │   ├── watches_train_small.json.gz
+│   │       │   └── watches_train_xlarge.json.gz
+│   │       └── validation-sets
+│   │           ├── all_valid_large.csv
+│   │           ├── all_valid_medium.csv
+│   │           ├── all_valid_small.csv
+│   │           ├── all_valid_xlarge.csv
+│   │           ├── cameras_valid_large.csv
+│   │           ├── cameras_valid_medium.csv
+│   │           ├── cameras_valid_small.csv
+│   │           ├── cameras_valid_xlarge.csv
+│   │           ├── computers_valid_large.csv
+│   │           ├── computers_valid_medium.csv
+│   │           ├── computers_valid_small.csv
+│   │           ├── computers_valid_xlarge.csv
+│   │           ├── shoes_valid_large.csv
+│   │           ├── shoes_valid_medium.csv
+│   │           ├── shoes_valid_small.csv
+│   │           ├── shoes_valid_xlarge.csv
+│   │           ├── watches_valid_large.csv
+│   │           ├── watches_valid_medium.csv
+│   │           ├── watches_valid_small.csv
+│   │           └── watches_valid_xlarge.csv
+│   └── repo-data.zip
+├── LICENSE
+├── log0615.txt
+├── productbert-intermediate.yml
+├── README.md
+├── reports
+├── requirements.txt
+├── setup.py
+├── src
+│   ├── data
+│   │   ├── download_datasets.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── utils.cpython-37.pyc
+│   │   └── utils.py
+│   ├── __init__.py
+│   ├── models
+│   │   ├── deepmatcher
+│   │   │   ├── run_deepmatcher.py
+│   │   │   ├── train_computers_large.py
+│   │   │   ├── train_computers_medium.py
+│   │   │   ├── train_computers_small.py
+│   │   │   └── train_computers_xlarge.py
+│   │   ├── __init__.py
+│   │   ├── magellan
+│   │   │   └── run_magellan.py
+│   │   └── wordcooc
+│   │       └── run_wordcooc.py
+│   ├── processing
+│   │   ├── preprocess
+│   │   │   ├── preprocess_corpus.py
+│   │   │   └── preprocess_ts_gs.py
+│   │   ├── process-bert
+│   │   │   └── process_to_bert.py
+│   │   ├── process-magellan
+│   │   │   └── process_to_magellan.py
+│   │   ├── process-wordcooc
+│   │   │   └── process-to-wordcooc.py
+│   │   └── sample-training-sets
+│   │       ├── build_intermediate_training_set.py
+│   │       ├── process_intermediate_training_sets.py
+│   │       └── sample_intermediate_training_sets.py
+│   ├── productbert
+│   │   ├── base
+│   │   │   ├── base_data_loader.py
+│   │   │   ├── base_model.py
+│   │   │   ├── base_trainer.py
+│   │   │   └── __init__.py
+│   │   ├── config_4cat_pretrain_cont.json
+│   │   ├── config_4cat_pretrain.json
+│   │   ├── config_computers_large.json
+│   │   ├── config_computers_large_productbert_4cat.json
+│   │   ├── config_computers_large_productbert_4cat_test.json
+│   │   ├── config_computers_large_productbert_computers.json
+│   │   ├── config_computers_large_productbert_computers_test.json
+│   │   ├── config_computers_large_productbert_mlm_computers.json
+│   │   ├── config_computers_large_productbert_mlm_computers_test.json
+│   │   ├── config_computers_large_test.json
+│   │   ├── config_computers_medium.json
+│   │   ├── config_computers_medium_productbert_4cat.json
+│   │   ├── config_computers_medium_productbert_4cat_test.json
+│   │   ├── config_computers_medium_productbert_computers.json
+│   │   ├── config_computers_medium_productbert_computers_test.json
+│   │   ├── config_computers_medium_productbert_mlm_computers.json
+│   │   ├── config_computers_medium_productbert_mlm_computers_test.json
+│   │   ├── config_computers_medium_test.json
+│   │   ├── config_computers_pretrain_cont.json
+│   │   ├── config_computers_pretrain.json
+│   │   ├── config_computers_pretrain_mlm_cont.json
+│   │   ├── config_computers_pretrain_mlm.json
+│   │   ├── config_computers_small.json
+│   │   ├── config_computers_small_productbert_4cat.json
+│   │   ├── config_computers_small_productbert_4cat_test.json
+│   │   ├── config_computers_small_productbert_computers.json
+│   │   ├── config_computers_small_productbert_computers_test.json
+│   │   ├── config_computers_small_productbert_mlm_computers.json
+│   │   ├── config_computers_small_productbert_mlm_computers_test.json
+│   │   ├── config_computers_small_test.json
+│   │   ├── config_computers_xlarge.json
+│   │   ├── config_computers_xlarge_productbert_4cat.json
+│   │   ├── config_computers_xlarge_productbert_4cat_noft_test.json
+│   │   ├── config_computers_xlarge_productbert_4cat_test.json
+│   │   ├── config_computers_xlarge_productbert_computers.json
+│   │   ├── config_computers_xlarge_productbert_computers_noft_test.json
+│   │   ├── config_computers_xlarge_productbert_computers_test.json
+│   │   ├── config_computers_xlarge_productbert_mlm_computers.json
+│   │   ├── config_computers_xlarge_productbert_mlm_computers_noft_test.json
+│   │   ├── config_computers_xlarge_productbert_mlm_computers_test.json
+│   │   ├── config_computers_xlarge_test.json
+│   │   ├── data_loader
+│   │   │   └── data_loaders.py
+│   │   ├── dataset
+│   │   │   └── datasets.py
+│   │   ├── logger
+│   │   │   ├── __init__.py
+│   │   │   ├── logger_config.json
+│   │   │   ├── logger.py
+│   │   │   └── visualization.py
+│   │   ├── model
+│   │   │   ├── loss.py
+│   │   │   ├── metric.py
+│   │   │   └── model.py
+│   │   ├── parse_config.py
+│   │   ├── saved
+│   │   │   └── models
+│   │   │       ├── BERT-4cat-pretrain
+│   │   │       │   └── 0710_094316
+│   │   │       │       ├── checkpoint-epoch40.pth
+│   │   │       │       ├── config.json
+│   │   │       │       └── model_with_head.bin
+│   │   │       ├── BERT-computers-pretrain
+│   │   │       │   └── 0708_185939
+│   │   │       │       ├── checkpoint-epoch40.pth
+│   │   │       │       ├── config.json
+│   │   │       │       └── model_with_head.bin
+│   │   │       └── BERT-computers-pretrain-mlm
+│   │   │           └── 0627_114018
+│   │   │               ├── checkpoint-epoch40.pth
+│   │   │               ├── config.json
+│   │   │               └── model_with_head.bin
+│   │   ├── test_mlm.py
+│   │   ├── test.py
+│   │   ├── train_computers_large_productbert_4cat.sh
+│   │   ├── train_computers_large_productbert_computers.sh
+│   │   ├── train_computers_large_productbert_mlm_computers.sh
+│   │   ├── train_computers_large.sh
+│   │   ├── train_computers_medium_productbert_4cat.sh
+│   │   ├── train_computers_medium_productbert_computers.sh
+│   │   ├── train_computers_medium_productbert_mlm_computers.sh
+│   │   ├── train_computers_medium.sh
+│   │   ├── train_computers_small_productbert_4cat.sh
+│   │   ├── train_computers_small_productbert_computers.sh
+│   │   ├── train_computers_small_productbert_mlm_computers.sh
+│   │   ├── train_computers_small.sh
+│   │   ├── train_computers_xlarge_productbert_4cat.sh
+│   │   ├── train_computers_xlarge_productbert_computers.sh
+│   │   ├── train_computers_xlarge_productbert_mlm_computers.sh
+│   │   ├── train_computers_xlarge.sh
+│   │   ├── trainer
+│   │   │   ├── __init__.py
+│   │   │   └── trainer.py
+│   │   ├── train_mlm.py
+│   │   ├── train.py
+│   │   ├── train_random.py
+│   │   └── utils
+│   │       ├── __init__.py
+│   │       └── util.py
+│   └── __pycache__
+│       └── __init__.cpython-37.pyc
+├── src.egg-info
+│   ├── dependency_links.txt
+│   ├── PKG-INFO
+│   ├── SOURCES.txt
+│   └── top_level.txt
+└── tree-ts-gs.txt
+
+47 directories, 204 files

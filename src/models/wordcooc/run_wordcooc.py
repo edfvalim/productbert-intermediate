@@ -25,37 +25,41 @@ import xgboost as xgb
 
 classifiers = {'NaiveBayes':  {'clf':BernoulliNB(),
                             'params':{}},
-                   'XGBoost': {'clf':xgb.XGBClassifier(random_state=42, n_jobs=4),
+                   'XGBoost': {'clf':xgb.XGBClassifier(
+                                random_state=42,
+                                n_jobs=4, 
+                                tree_method='gpu_hist',  # Use GPU for training
+                                predictor='gpu_predictor'),  # Use GPU for prediction
                                 'params':{"learning_rate": [0.1, 0.01, 0.001],
-                           "gamma" : [0.01, 0.1, 0.3, 0.5, 1, 1.5, 2],
-                           "max_depth": [2, 4, 7, 10],
-                           "colsample_bytree": [0.3, 0.6, 0.8, 1.0],
-                           "subsample": [0.2, 0.4, 0.5, 0.6, 0.7],
-                           "reg_alpha": [0, 0.5, 1],
-                           "reg_lambda": [1, 1.5, 2, 3, 4.5],
-                           "min_child_weight": [1, 3, 5, 7],
-                           "n_estimators": [100]}},
+                                "gamma" : [0.01, 0.1, 0.3, 0.5, 1, 1.5, 2],
+                                "max_depth": [2, 4, 7, 10],
+                                "colsample_bytree": [0.3, 0.6, 0.8, 1.0],
+                                "subsample": [0.2, 0.4, 0.5, 0.6, 0.7],
+                                "reg_alpha": [0, 0.5, 1],
+                                "reg_lambda": [1, 1.5, 2, 3, 4.5],
+                                "min_child_weight": [1, 3, 5, 7],
+                                "n_estimators": [100]}},
                    'RandomForest':  {'clf':RandomForestClassifier(random_state=42, n_jobs=4),
-                                'params':{'n_estimators': [100],
-                                 'max_features': ['sqrt', 'log2', None],
-                                 'max_depth': [2,4,7,10],
-                                 'min_samples_split': [2, 5, 10, 20],
-                                 'min_samples_leaf': [1, 2, 4, 8],
-                                 'class_weight':[None, 'balanced_subsample']
-                                 }},
+                                    'params':{'n_estimators': [100],
+                                    'max_features': ['sqrt', 'log2', None],
+                                    'max_depth': [2,4,7,10],
+                                    'min_samples_split': [2, 5, 10, 20],
+                                    'min_samples_leaf': [1, 2, 4, 8],
+                                    'class_weight':[None, 'balanced_subsample']
+                                    }},
                    'DecisionTree':  {'clf':DecisionTreeClassifier(random_state=42),
-                                'params':{'max_features': ['sqrt', 'log2', None],
-                                 'max_depth': [2,4,7,10],
-                                 'min_samples_split': [2, 5, 10, 20],
-                                 'min_samples_leaf': [1, 2, 4, 8],
-                                 'class_weight':[None, 'balanced']
-                                 }},
-                   'LinearSVC':  {'clf':LinearSVC(random_state=42, dual=False),
-                      'params':{'C': [0.0001 ,0.001, 0.01, 0.1, 1, 10, 100, 1000],
-                      'class_weight':[None, 'balanced']}},
+                                    'params':{'max_features': ['sqrt', 'log2', None],
+                                    'max_depth': [2,4,7,10],
+                                    'min_samples_split': [2, 5, 10, 20],
+                                    'min_samples_leaf': [1, 2, 4, 8],
+                                    'class_weight':[None, 'balanced']
+                                    }},
+                   'LinearSVC': {'clf':LinearSVC(random_state=42, dual=False),
+                                 'params':{'C': [0.0001 ,0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                                 'class_weight':[None, 'balanced']}},
                    'LogisticRegression': {'clf':LogisticRegression(random_state=42, solver='liblinear'),
-                        'params':{'C': [0.0001 ,0.001, 0.01, 0.1, 1, 10, 100, 1000],
-                        'class_weight':[None, 'balanced']}},
+                                          'params':{'C': [0.0001 ,0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                                          'class_weight':[None, 'balanced']}},
                    }
 
 def run_wordcooc(train_set, valid_set, test_set, feature_combinations, classifiers, experiment_name,
@@ -167,7 +171,14 @@ def run_wordcooc(train_set, valid_set, test_set, feature_combinations, classifie
                 elif k == 'RandomForest':
                     learner = RandomForestClassifier(random_state=run, n_jobs=4, **parameters)
                 elif k == 'XGBoost':
-                    learner = xgb.XGBClassifier(random_state=run, n_jobs=4, **parameters)
+                    learner = xgb.XGBClassifier(
+                            random_state=run,
+                            n_jobs=12,
+                            tree_method='gpu_hist',  # Ensure GPU training
+                            predictor='gpu_predictor',  # Ensure GPU prediction
+                            **parameters)
+
+                    
                 else:
                     print('Learner is not a valid option')
                     break
