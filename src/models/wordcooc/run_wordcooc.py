@@ -27,7 +27,7 @@ classifiers = {'NaiveBayes':  {'clf':BernoulliNB(),
                             'params':{}},
                    'XGBoost': {'clf':xgb.XGBClassifier(
                                 random_state=42,
-                                n_jobs=4, 
+                                n_jobs=12, 
                                 tree_method='gpu_hist',  # Use GPU for training
                                 predictor='gpu_predictor'),  # Use GPU for prediction
                                 'params':{"learning_rate": [0.1, 0.01, 0.001],
@@ -39,7 +39,7 @@ classifiers = {'NaiveBayes':  {'clf':BernoulliNB(),
                                 "reg_lambda": [1, 1.5, 2, 3, 4.5],
                                 "min_child_weight": [1, 3, 5, 7],
                                 "n_estimators": [100]}},
-                   'RandomForest':  {'clf':RandomForestClassifier(random_state=42, n_jobs=4),
+                   'RandomForest':  {'clf':RandomForestClassifier(random_state=42, n_jobs=12),
                                     'params':{'n_estimators': [100],
                                     'max_features': ['sqrt', 'log2', None],
                                     'max_depth': [2,4,7,10],
@@ -126,7 +126,7 @@ def run_wordcooc(train_set, valid_set, test_set, feature_combinations, classifie
                     v['params']['scale_pos_weight']: [1, pos_neg]
 
                 model = RandomizedSearchCV(cv=ps, estimator=classifier, param_distributions=v['params'],
-                                           random_state=42, n_jobs=4, scoring='f1', n_iter=500, pre_dispatch=8,
+                                           random_state=42, n_jobs=12, scoring='f1', n_iter=500, pre_dispatch=8,
                                            return_train_score=True)
 
                 feats_train = scipy.sparse.vstack(train_df[feature_combination + '_wordcooc'])
@@ -169,7 +169,7 @@ def run_wordcooc(train_set, valid_set, test_set, feature_combinations, classifie
                 elif k == 'LinearSVC':
                     learner = LinearSVC(random_state=run, dual=False, **parameters)
                 elif k == 'RandomForest':
-                    learner = RandomForestClassifier(random_state=run, n_jobs=4, **parameters)
+                    learner = RandomForestClassifier(random_state=run, n_jobs=12, **parameters)
                 elif k == 'XGBoost':
                     learner = xgb.XGBClassifier(
                             random_state=run,
